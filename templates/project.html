@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>영업 현장 뿌시기</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#reviews-box").html("");
+            // showReview();
+        });
+
+        function makeReview() {
+            let title = $('input:radio[name="optionsRadios"]:checked').val();
+            $.ajax({
+                type: "POST",
+                url: "/poll",
+                data: {title_give:title},
+                success: function (response) {
+                    if (response["result"] == "success") {
+                        alert(response["msg"]);
+                        window.location.reload();
+                    }
+                }
+            })
+        }
+
+
+        function validateLength(obj) {
+            let content = $(obj).val();
+            if (content.length > 140) {
+                alert("리뷰는 140자까지 기록할 수 있습니다.");
+                $(obj).val(content.substring(0, content.length - 1));
+            }
+        }
+    </script>
+
+
+</head>
+
+
+<body>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-arrow-right"></span>신규고객 영업에 가장 효과적인 방법은 무엇인가요? <a
+                            href="http://www.jquery2dotnet.com" target="_blank"><span
+                            class="glyphicon glyphicon-new-window"></span></a>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" value="1">
+                                    콜드콜 (Cold call)
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" value="2">
+                                    전시회 참여
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" value="3">
+                                    이메일 발송
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" value="4">
+                                    인바운드를 늘리는 것
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" value="5">
+                                    지인 소개
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="makeReview()">
+                        투표해주세요
+                    </button>
+                    <a href="#">View Result</a></div>
+            </div>
+        </div>
+
+        <div class="skills">
+  <ul class="lines">
+    <li class="line l--0">
+      <span class="line__label title">
+        Skill level:
+      </span>
+    </li>
+    <li class="line l--25">
+      <span class="line__label">
+        The basics
+      </span>
+    </li>
+    <li class="line l--50">
+      <span class="line__label">
+        Advanced
+      </span>
+    </li>
+    <li class="line l--75">
+      <span class="line__label">
+        Seasoned
+      </span>
+    </li>
+    <li class="line l--100">
+      <span class="line__label">
+        Expert
+      </span>
+    </li>
+  </ul>
+
+
+  <div class="charts">
+    <div class="chart chart--dev">
+      <span class="chart__title">Development</span>
+      <ul class="chart--horiz">
+        <li class="chart__bar" style="width: 98%;">
+          <span class="chart__label">
+            HTML5
+          </span>
+        </li>
+        <li class="chart__bar" style="width: 98%;">
+          <span class="chart__label">
+            CSS3 & SCSS & CSS in JS
+          </span>
+        </li>
+        <li class="chart__bar" style="width: 70%;">
+          <span class="chart__label">
+            JavaScript
+          </span>
+        </li>
+        <li class="chart__bar" style="width: 60%;">
+          <span class="chart__label">
+            ReactJS
+          </span>
+        </li>
+        <li class="chart__bar" style="width: 25%;">
+          <span class="chart__label">
+            AngularJS
+          </span>
+        </li>
+        <li class="chart__bar" style="width: 60%;">
+          <span class="chart__label">
+            jQuery
+          </span>
+        </li>
+        <li class="chart__bar" style="width: 55%;">
+          <span class="chart__label">
+            NodeJS
+          </span>
+        </li>
+        <li class="chart__bar" style="width: 50%;">
+          <span class="chart__label">
+            Grunt / Gulp / Webpack
+          </span>
+        </li>
+        <li class="chart__bar" style="width: 40%;">
+          <span class="chart__label">
+            .NET
+          </span>
+        </li>
+        <li class="chart__bar" style="width: 60%;">
+          <span class="chart__label">
+            Umbraco
+          </span>
+        </li>
+        <li class="chart__bar" style="width: 60%;">
+          <span class="chart__label">
+            Sitecore
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="chart chart--prod">
+      <span class="chart__title">Productivity</span>
+      <ul class="chart--horiz">
+      <li class="chart__bar" style="width: 75%;">
+        <span class="chart__label">
+          Git + Github, Bitbucket & Sourcetree
+        </span>
+      </li>
+      <li class="chart__bar" style="width: 80%;">
+        <span class="chart__label">
+          Microsoft Office
+        </span>
+      </li>
+    </ul>
+    </div>
+
+    <div class="chart chart--design">
+      <span class="chart__title">Design</span>
+      <ul class="chart--horiz">
+      <li class="chart__bar" style="width: 40%;">
+        <span class="chart__label">
+          Sketch
+        </span>
+      </li>
+      <li class="chart__bar" style="width: 40%;">
+        <span class="chart__label">
+          Photoshop
+        </span>
+      </li>
+      <li class="chart__bar" style="width: 35%;">
+        <span class="chart__label">
+          Illustrator
+        </span>
+      </li>
+      <li class="chart__bar" style="width: 80%;">
+        <span class="chart__label">
+          User Experience
+        </span>
+      </li>
+    </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body>
+
+
+</html>
